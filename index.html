@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFK1 Minecraft GFX | HQ Renders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --bg-black: #050505;
+            --card-gray: #111111;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.15) 0%, rgba(188, 19, 254, 0.05) 50%, transparent 100%);
+            z-index: -1;
+        }
+
+        .neon-title {
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.7);
+        }
+
+        /* RGB Animated Button */
+        .btn-rgb {
+            position: relative;
+            background: #000;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-rgb::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            bottom: -2px;
+            right: -2px;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing 20s linear infinite;
+            opacity: 1;
+            border-radius: 8px;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        .btn-rgb:hover {
+            color: #fff;
+            transform: scale(1.02);
+        }
+
+        .gfx-card {
+            background: var(--card-gray);
+            border: 1px solid #222;
+            transition: all 0.4s ease;
+        }
+
+        .gfx-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .gfx-card img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 200px;
+            object-cover: cover;
+        }
+
+        .gfx-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .credit-header {
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            color: #555;
+            text-align: center;
+            padding: 15px 0;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-glow"></div>
+    
+    <div class="credit-header">Created by <span class="text-cyan-400">FFK1</span></div>
+
+    <header class="container mx-auto px-6 py-12 text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-2 neon-title">FFK1 Minecraft GFX</h1>
+        <p class="text-cyan-400 text-lg md:text-xl font-semibold mb-8 uppercase tracking-widest">
+            High Quality Minecraft GFX Renders for Thumbnails
+        </p>
+        
+        <div class="max-w-3xl mx-auto bg-white/5 p-6 rounded-lg border border-white/10">
+            <p class="text-gray-400 leading-relaxed italic">
+                "These images are custom Minecraft GFX renders created and collected by <span class="text-white font-bold">FFK1</span>. 
+                You can download and use them in your thumbnails. Please give credit."
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="gallery">
+            <!-- Images will be populated by JS -->
+        </div>
+    </main>
+
+    <footer class="mt-20 py-12 bg-black border-t border-white/10 text-center">
+        <p class="text-gray-500 mb-2">All GFX by <span class="text-white">FFK1</span></p>
+        <p class="text-xs text-gray-600 uppercase tracking-widest">Please give proper credit when using.</p>
+    </footer>
+
+    <script>
+        // Exactly the images you uploaded
+        const images = [
+            '1000169559.jpg',
+            '1000169563.jpg',
+            '1000169561.jpg',
+            '1000166220.png',
+            '1000169569.jpg',
+            '1000166213.webp',
+            '1000169568.jpg',
+            '1000169564.png',
+            '1000169565.png',
+            '1000169557.jpg'
+        ];
+
+        const gallery = document.getElementById('gallery');
+
+        images.forEach((img, index) => {
+            const card = document.createElement('div');
+            card.className = 'gfx-card rounded-xl overflow-hidden';
+            
+            card.innerHTML = `
+                <div class="overflow-hidden">
+                    <img src="${img}" alt="FFK1 GFX Render">
+                </div>
+                <div class="p-5">
+                    <p class="text-xs text-gray-500 mb-1 uppercase font-bold">Minecraft GFX Render</p>
+                    <h3 class="text-white text-sm mb-4">Render #${index + 1}</h3>
+                    <a href="${img}" download="FFK1_GFX_${index + 1}" class="btn-rgb">
+                        Download HQ PNG
+                    </a>
+                </div>
+            `;
+            gallery.appendChild(card);
+        });
+    </script>
+</body>
+</html>
+
